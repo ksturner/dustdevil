@@ -14,11 +14,12 @@ settings = dict(
     debug_pdb = False,
 )
 try:
-    from settings_prod import settings
+    from settings_prod import settings as settings_prod
+    settings.update(settings_prod)
 except ImportError:
     try:
-        from settings_dev import settings
+        from settings_dev import settings as settings_dev
+        settings.update(settings_dev)
     except ImportError:
         pass
-settings.update(settings)
 
